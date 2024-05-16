@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import useHistory from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 export const SignUpPage = () => {
@@ -7,14 +7,16 @@ export const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup } = useContext(AuthContext);
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleSubmit = async (e) => {
     await signup(name, email, password);
     history.push('/login');
   };
+
   return (
     <div>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
