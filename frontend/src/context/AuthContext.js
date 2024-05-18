@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('localhost:5000/api/auth/login', {
+      const response = await axios.post('http://localhost:5000/login', {
         email,
         password,
       });
@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
 
   const signup = async (name, email, password) => {
     try {
-      await axios.post('localhost:5000/api/auth/signup', {
+      await axios.post('http://localhost:5000/signup', {
         name,
         email,
         password,

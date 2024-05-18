@@ -6,11 +6,12 @@ export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useContext(AuthContext);
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     await login(email, password);
-    history.push('/');
+    navigate('/');
   };
 
   return (
@@ -22,7 +23,7 @@ export const LoginPage = () => {
           <input
             type="email"
             value={email}
-            onClick={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
@@ -31,7 +32,7 @@ export const LoginPage = () => {
           <input
             type="password"
             value={password}
-            onClick={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>

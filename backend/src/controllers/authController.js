@@ -63,4 +63,4 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = { signup, login };
+module.exports = { signup, login, verifyToken };

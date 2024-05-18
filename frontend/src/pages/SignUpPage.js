@@ -7,11 +7,11 @@ export const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup } = useContext(AuthContext);
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     await signup(name, email, password);
-    history.push('/login');
+    navigate('/login');
   };
 
   return (
