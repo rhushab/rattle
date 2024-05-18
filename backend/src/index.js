@@ -7,8 +7,6 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-console.log('JWT_SECRET at start:', process.env.JWT_SECRET);
-
 app.use(bodyParser.json());
 
 const authRoutes = require('../src/routes/authRoutes');
@@ -27,7 +25,3 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server up at ${PORT}`);
 });
-
-console.log('MONGO_URI:', process.env.MONGO_URI);
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
-console.log('PORT:', process.env.PORT);
