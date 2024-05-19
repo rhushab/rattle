@@ -10,14 +10,12 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div>
-          <Routes>
-            <Route path="/" exact element={<HomePage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/create-blog" element={<CreateBlogPage />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" exact element={<HomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/create-blog" element={<CreateBlogPage />} />
+        </Routes>
       </Router>
     </AuthProvider>
   );

@@ -10,39 +10,41 @@ export const CreateBlogPage = () => {
   const history = useNavigate();
 
   if (!user) {
-    history.push('/login');
+    history('/login');
     return null;
   }
-
+  console.log(user.username);
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newBlog = { title, content, author: user.name };
-    await axios.post('localhost:5000/api/blogs', newBlog, {
+    const newBlog = { title, content, author: user.username };
+    await axios.post('http://localhost:5000/blog/create', newBlog, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
-    history.push('/');
   };
 
   return (
     <div>
+      <h1>Welcome, Create a blog</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
           <input
             value={title}
-            onClick={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </label>
         <label>
           Content:
           <input
-            value={title}
-            onClick={(e) => setContent(e.target.value)}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             required
           />
         </label>
+        <button type="submit">Post</button>
       </form>
     </div>
   );
 };
+
+export default CreateBlogPage;
