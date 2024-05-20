@@ -15,4 +15,13 @@ const createBlog = async (req, res) => {
   }
 };
 
-module.exports = { createBlog };
+const getAllBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find();
+    return res.status(200).json(blogs);
+  } catch (error) {
+    return res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = { createBlog, getAllBlogs };
